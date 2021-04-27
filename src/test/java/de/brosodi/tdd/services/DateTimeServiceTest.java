@@ -15,7 +15,7 @@ public class DateTimeServiceTest {
 	@Test
 	public void simpleTest() {
 		LocalDateTime result = classUnderTest.getCurrentDateTime();
-		assertThat(result).isCloseTo(LocalDateTime.now(), within(100, ChronoUnit.MILLIS));
+		assertThat(result).isCloseTo(LocalDateTime.now(), within(200, ChronoUnit.MILLIS));
 	}
 
 }

@@ -19,4 +19,13 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    checkstyleAnalysisEnabled: 'true'
+    goals: 'clean install -Pfailsafe'
+- task: PublishCodeCoverageResults@1
+  inputs:
+    pathToSources: '$(System.DefaultWorkingDirectory)'   
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/site/jacoco/jacoco.xml' 
+    additionalCodeCoverageFiles: '$(System.DefaultWorkingDirectory)/target/jacoco.exec'
+    codeCoverageTool: 'JaCoCo'
+    failIfCoverageEmpty: true
+    
